@@ -1,25 +1,30 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import HeaderDesktop from './common/components/header/headerDesktop';
+import Footer from './common/components/footer/footer';
+import HeaderMobile from './common/components/header/headerMobile';
+import HomePage from './modules/home/components/homePage';
+import {Route, Switch} from 'react-router-dom';
+import DetailPage from './modules/content-pages/components/DetailPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <HeaderDesktop />
+      <HeaderMobile />
+      {/* <HomePage></HomePage> */}
+      <Switch>
+        <Route path="/" exact>
+          <HomePage></HomePage>
+        </Route>
+        <Route path="/pages">
+          <DetailPage></DetailPage>
+        </Route>
+
+      </Switch>
+      <Footer />
+    </React.Fragment>
   );
 }
 
